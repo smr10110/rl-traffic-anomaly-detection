@@ -1,0 +1,50 @@
+/* top-nav-light — docs/design-system/DESIGN.md */
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  padding: 0 var(--space-6);
+  background: var(--color-canvas);
+  border-bottom: 1px solid var(--color-hairline-soft);
+}
+
+.topnav__brand {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-ink);
+}
+
+.topnav__links {
+  display: flex;
+  gap: var(--space-5);
+}
+
+/* Medido en coinbase.com: los links del top-nav real son 16px/600/ink, no el 14px/500
+   documentado en DESIGN.md como "nav-link" genérico. */
+.topnav__links a {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+.topnav__links a:hover {
+  color: var(--color-primary);
+}
+
+@media (max-width: 640px) {
+  .topnav__links {
+    gap: var(--space-3);
+  }
+
+  .topnav__links a {
+    font-size: 12px;
+  }
+}
