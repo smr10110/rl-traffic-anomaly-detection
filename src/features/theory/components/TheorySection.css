@@ -1,0 +1,147 @@
+.theory__hero {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: var(--space-12) var(--space-6) 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-12);
+  text-align: left;
+}
+
+.theory__hero-text {
+  max-width: 560px;
+  flex-shrink: 0;
+}
+
+.theory__hero-illustration {
+  width: 340px;
+  max-width: 40%;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.theory__kicker {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-pill);
+  padding: 4px var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.theory__hero h1 {
+  font-size: 48px;
+  letter-spacing: -2px;
+  line-height: 1.1;
+  margin-bottom: var(--space-6);
+}
+
+.theory__lead {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--color-body);
+  margin: 0 0 var(--space-8);
+}
+
+.theory__cta {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.theory h2 {
+  font-size: 32px;
+  letter-spacing: -1px;
+}
+
+.theory h2 span,
+.theory h3 span {
+  margin-right: var(--space-2);
+}
+
+.theory h3 {
+  font-size: 20px;
+  margin-top: var(--space-8);
+}
+
+.theory p {
+  line-height: 1.65;
+  margin: 0 0 var(--space-4);
+}
+
+/* Layout de dos columnas: texto + imagen al lado, igual que el hero */
+.theory__split {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.theory__split-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.theory__split-media {
+  width: 420px;
+  max-width: 45%;
+  height: auto;
+  flex-shrink: 0;
+  border-radius: var(--radius-lg);
+}
+
+.theory__split .media-placeholder {
+  width: 420px;
+  max-width: 45%;
+  flex-shrink: 0;
+  margin: 0;
+}
+
+/* Caja de analogía destacada — flota como card sobre la banda gris (card-on-band, DESIGN.md) */
+.theory__analogy {
+  background: var(--color-canvas);
+  border-left: 3px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-6) var(--space-8);
+  box-shadow: var(--shadow-elevated);
+}
+
+.theory__analogy h2 {
+  margin-top: 0;
+}
+
+@media (max-width: 860px) {
+  .theory__hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .theory__hero-text {
+    max-width: none;
+  }
+
+  .theory__hero-illustration {
+    width: 200px;
+    max-width: 70%;
+  }
+
+  .theory__split {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .theory__split-media,
+  .theory__split .media-placeholder {
+    width: 280px;
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 640px) {
+  .theory__hero h1 {
+    font-size: 34px;
+    letter-spacing: -1px;
+  }
+}

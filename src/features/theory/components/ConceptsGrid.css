@@ -1,0 +1,41 @@
+.concepts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin: var(--space-6) 0 0;
+}
+
+.concepts__card {
+  background: var(--color-surface-soft);
+  border: 1px solid var(--color-hairline-soft);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+}
+
+.concepts__card dt {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--color-ink);
+  margin-bottom: var(--space-2);
+}
+
+.concepts__card dd {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.concepts__card dd p {
+  margin: 0 0 var(--space-2);
+}
+
+.concepts__example {
+  color: var(--color-primary);
+  font-size: 13px;
+}
+
+@media (max-width: 860px) {
+  .concepts {
+    grid-template-columns: 1fr;
+  }
+}
