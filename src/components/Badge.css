@@ -1,0 +1,32 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-pill);
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+/* Semántico: color solo como texto/borde, nunca como fondo sólido (ver DESIGN.md) */
+.badge--live {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  background: rgba(0, 82, 255, 0.08);
+}
+
+.badge__icon {
+  flex-shrink: 0;
+}
+
+.badge--live .badge__icon {
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
