@@ -1,0 +1,124 @@
+.grid-map {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.grid-map__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+}
+
+.grid-map__header h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--color-on-dark);
+  margin: 0;
+  font-size: 18px;
+}
+
+.grid-map__grid-wrapper {
+  position: relative;
+}
+
+.grid-map__grid {
+  display: grid;
+  gap: 6px;
+  margin-bottom: var(--space-4);
+}
+
+.grid-map__empty-hint {
+  position: absolute;
+  inset: 0;
+  bottom: var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-4);
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-on-dark-soft);
+  background: rgba(10, 11, 13, 0.55);
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+}
+
+.grid-node {
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .grid-node {
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+}
+
+.grid-node--unvisited {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.grid-node--normal {
+  background: rgba(5, 177, 105, 0.1);
+  border: 1px solid var(--color-up);
+  color: var(--color-up);
+}
+
+.grid-node--anomaly {
+  background: rgba(207, 32, 47, 0.12);
+  border: 1px solid var(--color-down);
+  color: var(--color-down);
+}
+
+.grid-node--congestion {
+  background: rgba(244, 176, 0, 0.12);
+  border: 1px solid var(--color-accent-yellow);
+  color: var(--color-accent-yellow);
+}
+
+.grid-node--agent {
+  background: rgba(0, 82, 255, 0.15);
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(0, 82, 255, 0.25);
+}
+
+.grid-map__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  font-size: 12px;
+  color: var(--color-on-dark-soft);
+}
+
+.grid-map__legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.legend__icon--up {
+  color: var(--color-up);
+}
+
+.legend__icon--down {
+  color: var(--color-down);
+}
+
+.legend__icon--warn {
+  color: var(--color-accent-yellow);
+}
+
+.legend__unvisited-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}

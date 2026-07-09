@@ -1,0 +1,93 @@
+.qtable-panel__summary {
+  cursor: pointer;
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-primary);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.qtable-panel__summary::-webkit-details-marker {
+  display: none;
+}
+
+.qtable-panel__chevron {
+  transition: transform 0.15s ease;
+}
+
+.qtable-panel__details[open] .qtable-panel__chevron {
+  transform: rotate(180deg);
+}
+
+.qtable-panel__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--color-on-dark);
+  margin: var(--space-4) 0 0;
+  font-size: 18px;
+}
+
+.qtable-panel__hint {
+  color: var(--color-on-dark-soft);
+  font-size: 13px;
+  margin: var(--space-3) 0 var(--space-4);
+}
+
+.qtable-panel__legend-swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  margin: 0 2px -1px;
+}
+
+.qtable-panel__legend-swatch--up {
+  background: var(--color-up);
+}
+
+.qtable-panel__legend-swatch--down {
+  background: var(--color-down);
+}
+
+.qtable-grid {
+  max-height: 320px;
+  overflow-y: auto;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.qtable-grid__header,
+.qtable-grid__row {
+  display: grid;
+  grid-template-columns: 40px repeat(4, 1fr);
+  gap: var(--space-2);
+  padding: var(--space-1) 0;
+}
+
+.qtable-grid__header {
+  color: var(--color-on-dark-soft);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: var(--space-2);
+  margin-bottom: var(--space-1);
+}
+
+.qtable-grid__state {
+  color: var(--color-on-dark-soft);
+}
+
+.qtable-grid__cell {
+  border-radius: var(--radius-xs);
+  padding: 2px var(--space-2);
+  text-align: right;
+  color: var(--color-surface-dark);
+}
+
+.qtable-grid__cell--up {
+  background: var(--color-up);
+}
+
+.qtable-grid__cell--down {
+  background: var(--color-down);
+}

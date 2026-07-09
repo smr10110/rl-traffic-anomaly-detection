@@ -1,0 +1,122 @@
+.decision-panel {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.decision-panel h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--color-on-dark);
+  margin: 0 0 var(--space-2);
+  font-size: 18px;
+}
+
+.decision-panel__empty {
+  color: var(--color-on-dark-soft);
+  font-size: 13px;
+  margin: 0;
+}
+
+.decision-panel__state {
+  font-size: 13px;
+  color: var(--color-on-dark-soft);
+  margin: 0 0 var(--space-6);
+}
+
+.decision-panel__state b {
+  color: var(--color-on-dark);
+  font-weight: 500;
+}
+
+.decision-panel__anomaly {
+  color: var(--color-down) !important;
+}
+
+/* Layout de cruz — inspirado en el panel "Action Values Q(s,a)" del playground de referencia */
+.cross {
+  flex: 1;
+  display: grid;
+  grid-template-areas:
+    '.    up    .'
+    'left center right'
+    '.    down  .';
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr auto 1fr;
+  align-items: center;
+  justify-items: center;
+  gap: var(--space-2);
+  min-height: 160px;
+}
+
+.cross__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.cross__item--row {
+  flex-direction: row;
+  gap: var(--space-2);
+}
+
+.cross__item--up { grid-area: up; }
+.cross__item--left { grid-area: left; }
+.cross__item--right { grid-area: right; }
+.cross__item--down { grid-area: down; }
+
+.cross__arrow {
+  font-size: 20px;
+  color: var(--color-on-dark-soft);
+  line-height: 1;
+}
+
+.cross__value {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 15px;
+  color: var(--color-on-dark);
+}
+
+.cross__item--chosen .cross__arrow,
+.cross__item--chosen .cross__value {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.cross__bar-track {
+  width: 40px;
+  height: 4px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.cross__bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: var(--radius-pill);
+}
+
+.cross__bar-fill--up {
+  background: var(--color-up);
+}
+
+.cross__bar-fill--down {
+  background: var(--color-down);
+}
+
+.decision-panel__reason {
+  margin: var(--space-4) 0 0;
+  padding-top: var(--space-3);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-on-dark-soft);
+}
+
+.decision-panel__reason strong {
+  color: var(--color-on-dark);
+  font-weight: 500;
+}
