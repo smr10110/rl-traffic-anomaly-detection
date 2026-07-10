@@ -2,6 +2,8 @@
 
 **Estudiante:** Angelo Huaiquil
 
+> **Demo en vivo:** https://smr10110.github.io/rl-traffic-anomaly-detection/
+
 Aplicación web educativa e interactiva que enseña Aprendizaje por Refuerzo (RL) mediante un caso
 práctico de navegación autónoma: un dron de monitoreo que aprende, con Q-learning tabular, a
 recorrer una ciudad para encontrar accidentes o cortes de ruta lo más rápido posible, evadiendo la
