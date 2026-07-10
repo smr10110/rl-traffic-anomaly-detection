@@ -73,11 +73,11 @@ src/
 └── main.jsx
 tests/                          # Carpeta espejo de src/, alias @ configurado en vite.config.js
 docs/
-└── informe.md                  # Informe breve (2-4 páginas) del entregable
+└── Informe.pdf                 # Informe breve (2-4 páginas) del entregable
 ```
 
 ## Documentación adicional
 
-- [`docs/informe.md`](docs/informe.md) — informe breve (2-4 páginas) exigido como entregable:
+- [`docs/Informe.pdf`](docs/Informe.pdf) — informe breve (2-4 páginas) exigido como entregable:
   introducción a RL, conceptos fundamentales, algoritmo, modelado del caso práctico, visualización
   y conclusiones/limitaciones.
