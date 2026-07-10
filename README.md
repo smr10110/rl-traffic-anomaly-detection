@@ -18,10 +18,29 @@ Inteligentes".
 
 ## Instalación y uso
 
+Clonar el repositorio:
+
+```bash
+git clone https://github.com/smr10110/rl-traffic-anomaly-detection.git
+cd rl-traffic-anomaly-detection
+```
+
+O descargar el ZIP desde GitHub (botón "Code" → "Download ZIP") y descomprimirlo, sin necesidad
+de tener git instalado.
+
+Luego, instalar dependencias y correr la app:
+
 ```bash
 npm install
-npm run dev       
+npm run dev       # servidor de desarrollo
+npm run build     # build de producción en dist/
+npm run preview   # sirve el build de dist/ localmente
+npm run lint      # oxlint
+npm run test      # vitest en modo watch
+npm run test:run  # vitest en modo CI (una corrida)
 ```
+
+> `npm run dev` levanta la app en **http://localhost:5173** (puerto por defecto de Vite).
 
 ## Arquitectura
 
@@ -61,7 +80,7 @@ docs/
 Flujo desde la lógica de RL pura (`core/`) hasta la UI, pasando por el hook puente
 `useTrafficSimulation`:
 
-![Diagrama de arquitectura de componentes](docs/diagrams/arquitectura-componentes.svg)
+![Diagrama de arquitectura de componentes](docs/diagrams/arquitectura-componentes.png)
 
 Fuente editable: [`docs/diagrams/arquitectura-componentes.puml`](docs/diagrams/arquitectura-componentes.puml).
 
@@ -70,7 +89,7 @@ Fuente editable: [`docs/diagrams/arquitectura-componentes.puml`](docs/diagrams/a
 Qué ocurre cuando el usuario dispara `step()` desde los controles de la demo, hasta el
 re-render de React con el nuevo estado del agente:
 
-![Diagrama de secuencia de un paso de simulación](docs/diagrams/secuencia-step-simulacion.svg)
+![Diagrama de secuencia de un paso de simulación](docs/diagrams/secuencia-step-simulacion.png)
 
 Fuente editable: [`docs/diagrams/secuencia-step-simulacion.puml`](docs/diagrams/secuencia-step-simulacion.puml).
 

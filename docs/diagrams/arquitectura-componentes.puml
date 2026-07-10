@@ -1,0 +1,75 @@
+@startuml arquitectura-componentes
+!theme plain
+skinparam componentStyle rectangle
+skinparam backgroundColor transparent
+skinparam shadowing false
+
+title Arquitectura de componentes — flujo core -> hook -> UI
+
+package "src/core (JS puro, sin React)" {
+  [TrafficGridEnv.js] as Env
+  [QLearningAgent.js] as Agent
+}
+
+package "src/features/anomaly-detection-demo" {
+  [useTrafficSimulation.js\n(hook puente)] as Hook
+  package "components/" {
+    [AnomalyDetectionDemoSection] as Section
+    [TrafficGridMap] as GridMap
+    [DecisionPanel] as Decision
+    [QTablePanel] as QTable
+    [RewardChart] as Chart
+    [SimulationControls] as Controls
+  }
+}
+
+package "src/features/theory" {
+  [TheorySection]
+}
+
+package "src/features/conclusions" {
+  [ConclusionsSection]
+}
+
+package "src/components (UI compartida)" {
+  [Card]
+  [Badge]
+  [Band]
+  [Button]
+}
+
+package "src/app" {
+  [App.jsx]
+}
+
+Env <.. Hook : instancia en useRef
+Agent <.. Hook : instancia en useRef
+Hook --> Section : expone grid, position,\nqTable, history, step(), reset()
+Section --> GridMap
+Section --> Decision
+Section --> QTable
+Section --> Chart
+Section --> Controls
+
+GridMap ..> Card
+GridMap ..> Badge
+Decision ..> Card
+TheorySection ..> Band
+
+App.jsx --> TheorySection
+App.jsx --> Section
+App.jsx --> ConclusionsSection
+
+note bottom of Env
+  Sin imports de React ni de features/.
+  Testeable de forma aislada (tests/core/).
+end note
+
+note right of Hook
+  Mantiene Env y Agent en useRef
+  (no useState) para no recrearlos
+  en cada render. Expone solo lo
+  que la UI necesita re-renderizar.
+end note
+
+@enduml
