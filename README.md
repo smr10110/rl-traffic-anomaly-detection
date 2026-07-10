@@ -71,27 +71,8 @@ src/
 └── main.jsx
 tests/                          # Carpeta espejo de src/, alias @ configurado en vite.config.js
 docs/
-├── informe.md                  # Informe breve (2-4 páginas) del entregable
-└── diagrams/                   # Diagramas PlantUML (.puml) + su render SVG
+└── informe.md                  # Informe breve (2-4 páginas) del entregable
 ```
-
-### Diagrama de componentes
-
-Flujo desde la lógica de RL pura (`core/`) hasta la UI, pasando por el hook puente
-`useTrafficSimulation`:
-
-![Diagrama de arquitectura de componentes](docs/diagrams/arquitectura-componentes.png)
-
-Fuente editable: [`docs/diagrams/arquitectura-componentes.puml`](docs/diagrams/arquitectura-componentes.puml).
-
-### Diagrama de secuencia: un paso de simulación
-
-Qué ocurre cuando el usuario dispara `step()` desde los controles de la demo, hasta el
-re-render de React con el nuevo estado del agente:
-
-![Diagrama de secuencia de un paso de simulación](docs/diagrams/secuencia-step-simulacion.png)
-
-Fuente editable: [`docs/diagrams/secuencia-step-simulacion.puml`](docs/diagrams/secuencia-step-simulacion.puml).
 
 ## Documentación adicional
 
