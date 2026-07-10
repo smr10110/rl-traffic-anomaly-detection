@@ -18,10 +18,19 @@ const ACTION_DELTAS = {
   [ACTIONS.RIGHT]: [0, 1],
 }
 
+// Probabilidades elegidas para que un grid de 25 celdas tenga, en promedio, unas 4-5 anomalías
+// y 3-4 celdas de congestión — suficiente densidad para que el agente tenga incentivo real de
+// explorar y evitar, sin saturar el grid (mutuamente excluyentes, se evalúan en ese orden sobre
+// el mismo roll de rng: primero anomalía, luego congestión, el resto normal).
 const ANOMALY_PROBABILITY = 0.18
 const CONGESTION_PROBABILITY = 0.15
 
-// Recompensas — ver CLAUDE.md / docs/decisions/ para la justificación de negocio de cada valor.
+// Recompensas — ver CLAUDE.md para la justificación de negocio de cada valor. La magnitud
+// relativa importa para el aprendizaje: CONGESTION_PENALTY (-50) es lo
+// bastante grande frente a STEP_PENALTY (-1) para que el agente aprenda a rodear congestión en
+// vez de solo tolerarla, y ANOMALY_REWARD (100) supera el costo de un recorrido casi completo
+// del grid (25 celdas * -1), para que encontrar la anomalía siga siendo la prioridad dominante
+// incluso si el camino es largo.
 export const STEP_PENALTY = -1 // cada movimiento consume tiempo/batería del dron
 export const CONGESTION_PENALTY = -50 // entrar a un embotellamiento retrasa la misión
 export const ANOMALY_REWARD = 100 // llegar a la coordenada del accidente/corte
@@ -32,8 +41,12 @@ export function encodePosition(row, col, gridSize = GRID_SIZE) {
   return row * gridSize + col
 }
 
-// rng es inyectable para que la generación sea determinística en tests (ver test-writer agent).
-// Cada celda es anomalía, congestión, o normal — mutuamente excluyentes.
+/**
+ * Genera un grid nuevo sorteando el tipo de cada celda (anomalía / congestión / normal).
+ *
+ * `rng` es inyectable (en vez de usar `Math.random` directo) para poder testear de forma
+ * determinística la generación del grid — ver `tests/core/environment/TrafficGridEnv.test.js`.
+ */
 export function generateGrid(gridSize = GRID_SIZE, rng = Math.random) {
   return Array.from({ length: gridSize * gridSize }, () => {
     const roll = rng()
@@ -62,6 +75,16 @@ export class TrafficGridEnv {
     return encodePosition(0, 0, this.gridSize)
   }
 
+  /**
+   * Aplica una acción y devuelve la transición. El movimiento fuera del borde del grid se
+   * recorta (clamp) a la celda actual — no hay penalización extra por intentarlo, igual que en
+   * el playground de referencia (`REF/web-rl-playground/`).
+   *
+   * Precedencia de recompensa intencional: una anomalía solo premia en su primera visita
+   * (`isNewVisit`); si la celda es de congestión, penaliza *cada* vez que se entra ahí (no solo
+   * la primera), para que el agente aprenda a rodearla de forma sostenida en vez de solo evitar
+   * pisarla una vez.
+   */
   step(action) {
     const [dRow, dCol] = ACTION_DELTAS[action]
     const row = Math.min(this.gridSize - 1, Math.max(0, this.position.row + dRow))

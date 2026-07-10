@@ -10,6 +10,39 @@ function buildGrid() {
   }))
 }
 
+/**
+ * Hook puente entre la lógica de RL pura (`core/environment/TrafficGridEnv`,
+ * `core/agent/QLearningAgent`) y la UI de la demo. Mantiene el entorno y el agente en `useRef`
+ * (no en `useState`) para que no se recreen en cada render — solo se recrean en `reset()` o al
+ * completarse un episodio (`done`).
+ *
+ * Efectos secundarios por llamada a `step()`:
+ * - Consulta al agente una acción (epsilon-greedy) y avanza el entorno un paso.
+ * - Actualiza la tabla Q del agente in-place (`agentRef.current`), sin pasar por React state —
+ *   por eso `qTable` se expone leyendo directamente `agentRef.current.getQTable()` en cada
+ *   render en vez de guardarse en un `useState` propio.
+ * - Si el episodio termina (`done`: se encontraron todas las anomalías o se llegó a
+ *   `MAX_STEPS`), regenera el grid, reinicia la posición del dron a (0,0) y **conserva** la
+ *   misma instancia de `QLearningAgent` (el aprendizaje persiste entre episodios dentro de una
+ *   misma sesión de simulación).
+ *
+ * @returns {{
+ *   grid: Array,
+ *   gridSize: number,
+ *   position: {row: number, col: number},
+ *   history: Array,
+ *   totalReward: number,
+ *   qTable: number[][],
+ *   actions: object,
+ *   statusMessage: string,
+ *   episodeCount: number,
+ *   stepInEpisode: number,
+ *   maxSteps: number,
+ *   episodeHistory: Array,
+ *   step: () => void,
+ *   reset: () => void,
+ * }}
+ */
 export function useTrafficSimulation() {
   const envRef = useRef(null)
   const agentRef = useRef(null)
