@@ -8,7 +8,9 @@ html {
   scroll-behavior: smooth;
 }
 
-section[id] {
+section[id],
+#referencias,
+[id^='ref-'] {
   scroll-margin-top: 64px;
 }
 
@@ -31,6 +33,17 @@ h1, h2, h3 {
 
 #root {
   min-height: 100svh;
+}
+
+.citation {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.citation:hover,
+.citation:focus-visible {
+  text-decoration: underline;
 }
 
 .visually-hidden {

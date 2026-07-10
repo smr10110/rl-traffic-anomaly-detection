@@ -46,7 +46,8 @@ export function TheorySection() {
               con un <strong>entorno</strong>: prueba acciones, recibe{' '}
               <strong>recompensas</strong> o penalizaciones, y ajusta su comportamiento para
               conseguir la mayor recompensa posible a largo plazo — sin que nadie le muestre de
-              antemano la respuesta correcta.
+              antemano la respuesta correcta
+              <sup><a href="#ref-1" className="citation">[1]</a></sup>.
             </p>
           </div>
           <img
@@ -93,7 +94,9 @@ export function TheorySection() {
             <p>
               El agente y el entorno conversan en un bucle continuo: el dron observa su posición
               actual, elige hacia dónde moverse, y la ciudad responde con una recompensa y su nueva
-              posición. Cada vuelta del ciclo es una oportunidad de aprender.
+              posición. Cada vuelta del ciclo es una oportunidad de aprender — la mecánica de
+              navegación en grid de esta demo está inspirada en un simulador educativo de RL de
+              código abierto<sup><a href="#ref-4" className="citation">[4]</a></sup>.
             </p>
           </div>
           <img

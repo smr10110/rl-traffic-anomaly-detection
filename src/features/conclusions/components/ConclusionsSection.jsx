@@ -53,6 +53,41 @@ export function ConclusionsSection() {
           </li>
         </ul>
 
+        <h3 id="referencias">Referencias</h3>
+        <ol className="conclusions__references">
+          <li id="ref-1">
+            Sutton, R. S., &amp; Barto, A. G. (2018).{' '}
+            <em>Reinforcement Learning: An Introduction</em> (2.ª ed.). MIT Press.{' '}
+            <a href="http://incompleteideas.net/book/the-book-2nd.html" rel="noreferrer" target="_blank">
+              incompleteideas.net/book/the-book-2nd.html
+            </a>
+          </li>
+          <li id="ref-2">
+            Watkins, C. J. C. H., &amp; Dayan, P. (1992). Q-learning. <em>Machine Learning</em>,
+            8(3-4), 279–292.{' '}
+            <a href="https://doi.org/10.1007/BF00992698" rel="noreferrer" target="_blank">
+              doi.org/10.1007/BF00992698
+            </a>
+          </li>
+          <li id="ref-3">
+            OpenAI. <em>Key Concepts in RL — Spinning Up in Deep RL</em>.{' '}
+            <a
+              href="https://spinningup.openai.com/en/latest/spinningup/rl_intro.html"
+              rel="noreferrer"
+              target="_blank"
+            >
+              spinningup.openai.com/en/latest/spinningup/rl_intro.html
+            </a>
+          </li>
+          <li id="ref-4">
+            Juliani, A. <em>The Beginner's RL Playground</em>. Referencia de diseño para la
+            mecánica de navegación en grid adaptada en esta demo.{' '}
+            <a href="https://awjuliani.github.io/web-rl-playground/" rel="noreferrer" target="_blank">
+              awjuliani.github.io/web-rl-playground
+            </a>
+          </li>
+        </ol>
+
         <footer className="conclusions__footer">
           <p>
             Proyecto individual · Sistemas Inteligentes · 2026 —{' '}

@@ -13,10 +13,13 @@ export function AlgorithmExplainer() {
     <>
       <h2><span aria-hidden="true">🧮</span> El algoritmo: Q-learning</h2>
       <p>
-        Q-learning es uno de los algoritmos clásicos de RL. Su idea central es mantener una{' '}
+        Q-learning es uno de los algoritmos clásicos de RL
+        <sup><a href="#ref-2" className="citation">[2]</a></sup>. Su idea central es mantener una{' '}
         <strong>tabla Q</strong>: una fila por cada estado posible, una columna por cada acción, y
         en cada celda un número — <span className="algo__q">Q(s, a)</span> — que estima qué tan
-        buena es esa acción en ese estado. Al inicio todo vale cero: el dron no sabe nada.
+        buena es esa acción en ese estado
+        <sup><a href="#ref-3" className="citation">[3]</a></sup>. Al inicio todo vale cero: el dron
+        no sabe nada.
       </p>
       <figure className="algo__media">
         <img
@@ -30,7 +33,10 @@ export function AlgorithmExplainer() {
       </figure>
 
       <h3><span aria-hidden="true">🔁</span> La regla de actualización</h3>
-      <p>Después de cada movimiento, la celda usada se corrige con la ecuación de Bellman:</p>
+      <p>
+        Después de cada movimiento, la celda usada se corrige con la ecuación de Bellman
+        <sup><a href="#ref-2" className="citation">[2]</a></sup>:
+      </p>
       <div className="algo__formula" role="math" aria-label="Q de s y a se actualiza sumando alfa por la diferencia entre r más gamma por el máximo Q del siguiente estado, menos Q actual">
         Q(s, a) ← Q(s, a) + α · [ r + γ · max<sub>a′</sub> Q(s′, a′) − Q(s, a) ]
       </div>
@@ -38,7 +44,8 @@ export function AlgorithmExplainer() {
         Fijate que la actualización usa el <strong>máximo</strong> Q del siguiente estado — no la
         acción que el dron realmente va a tomar después (que puede ser una exploración al azar).
         Por eso Q-learning es un algoritmo <em>off-policy</em>: aprende sobre la mejor política
-        posible aunque en la práctica explore siguiendo otra.
+        posible aunque en la práctica explore siguiendo otra
+        <sup><a href="#ref-1" className="citation">[1]</a></sup>.
       </p>
       <ul className="algo__params">
         <li>
@@ -52,7 +59,8 @@ export function AlgorithmExplainer() {
         <li>
           <strong>ε (épsilon = 0.2)</strong> — exploración: un 20% de las veces el dron prueba una
           dirección al azar en vez de la mejor conocida. Sin explorar, nunca descubriría rutas
-          mejores que la primera que le funcionó.
+          mejores que la primera que le funcionó
+          <sup><a href="#ref-1" className="citation">[1]</a></sup>.
         </li>
       </ul>
       <p>
@@ -102,7 +110,8 @@ export function AlgorithmExplainer() {
         explora al azar, sino que toma una ruta directa hacia la anomalía, reaccionando
         inteligentemente a la congestión que va descubriendo en el camino. Como ε y α se mantienen
         fijos en vez de ir bajando con el tiempo, no hay garantía matemática de que sea la ruta
-        perfecta — pero en la práctica converge a un comportamiento muy cercano al óptimo.
+        perfecta<sup><a href="#ref-2" className="citation">[2]</a></sup> — pero en la práctica
+        converge a un comportamiento muy cercano al óptimo.
       </p>
     </>
   )
