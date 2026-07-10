@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { App } from './App'
+import { App } from '@/app/App'
 
 describe('App', () => {
   it('monta el shell completo con navegación y todas las secciones', () => {

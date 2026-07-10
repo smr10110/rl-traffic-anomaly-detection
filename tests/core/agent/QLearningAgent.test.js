@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import fc from 'fast-check'
-import { QLearningAgent } from './QLearningAgent'
+import { QLearningAgent } from '@/core/agent/QLearningAgent'
 
 function makeAgent(overrides = {}) {
   return new QLearningAgent({ stateCount: 4, actionCount: 2, ...overrides })

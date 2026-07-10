@@ -7,7 +7,7 @@ import {
   ACTIONS,
   GRID_SIZE,
   STATE_COUNT,
-} from './TrafficGridEnv'
+} from '@/core/environment/TrafficGridEnv'
 
 describe('encodePosition', () => {
   it('mapea (0,0) a 0 y (gridSize-1,gridSize-1) al último índice', () => {
